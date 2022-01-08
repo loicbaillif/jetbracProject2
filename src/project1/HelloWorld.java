@@ -8,20 +8,25 @@ public class HelloWorld {
 		// TODO Auto-generated method stub
 		System.out.println("Hello, world!");
 		Scanner scanner = new Scanner(System.in);
-		int nInput = scanner.nextInt();
-        int output = nInput;
-        final byte THREE = 3;
-        final byte TWO = 2;
-        final byte ONE = 1;
-        while (output != ONE) {
-        	System.out.format("%d ", output);
-            if (output % TWO == 0) {
-                output /= TWO;
-            } else {
-                output = output * THREE + ONE;
-            }            
+		int currentInput = scanner.nextInt();
+        int nextInput = scanner.nextInt();
+        while (currentInput == nextInput && nextInput != 0) {
+            currentInput = nextInput;
+            nextInput = scanner.nextInt();
         }
-        System.out.format("1%n***** End of program *****");
+        boolean ascending = currentInput < nextInput ? true : false;
+        boolean ordered = true;
+        while (nextInput != 0 && ordered) {
+            currentInput = nextInput;
+            nextInput = scanner.nextInt();
+            if (ascending && currentInput > nextInput) {
+                ordered = false;
+            } else if (!ascending && currentInput < nextInput) {
+                ordered = false;
+            }
+        }
+        System.out.format("%b%n", ordered);
+        System.out.println("***** End of program *****");
 		
 	}
 
