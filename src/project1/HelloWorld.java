@@ -8,26 +8,15 @@ public class HelloWorld {
 		// TODO Auto-generated method stub
 		System.out.println("Hello, world!");
 		Scanner scanner = new Scanner(System.in);
-		int currentInput = scanner.nextInt();
-        int nextInput = scanner.nextInt();
-        while (currentInput == nextInput && nextInput != 0) {
-            currentInput = nextInput;
-            nextInput = scanner.nextInt();
+		int nextInt = scanner.nextInt();
+        final String[] answer = {"even", "odd"};
+        final int two = 2;
+        while (nextInt != 0) {
+            System.out.println(answer[nextInt % two]);
+            nextInt = scanner.nextInt();
         }
-        boolean ascending = currentInput < nextInput ? true : false;
-        boolean ordered = true;
-        while (nextInput != 0 && ordered) {
-            currentInput = nextInput;
-            nextInput = scanner.nextInt();
-            if (ascending && currentInput > nextInput) {
-                ordered = false;
-            } else if (!ascending && currentInput < nextInput) {
-                ordered = false;
-            }
-        }
-        System.out.format("%b%n", ordered);
         System.out.println("***** End of program *****");
-		
+		scanner.close();
 	}
 
 }
