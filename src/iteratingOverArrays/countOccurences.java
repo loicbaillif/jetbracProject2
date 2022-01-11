@@ -20,16 +20,17 @@ public class countOccurences {
 		Scanner scanner = new Scanner(System.in);
 		short nbElts = scanner.nextShort();
 		int[] elts = new int[nbElts];
+		int cpt = 0;
 		for (int i = 0; i < nbElts; i++) {
 			// Filling the array
 			elts[i] = scanner.nextInt();
 		}
 		int nNumber = scanner.nextInt();
-		short cpt = 0;
 		for (int elt : elts) {
 			cpt += elt == nNumber ? 1 : 0;
 		}
 		System.out.println(cpt);
+		scanner.close();
 	}
 
 }
