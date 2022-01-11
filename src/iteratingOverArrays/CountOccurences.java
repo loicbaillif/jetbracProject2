@@ -2,7 +2,7 @@ package iteratingOverArrays;
 
 import java.util.Scanner;
 
-public class countOccurences {
+public class CountOccurences {
 
 	public static void main(String[] args) {
 		/* ***** Exercise *****
