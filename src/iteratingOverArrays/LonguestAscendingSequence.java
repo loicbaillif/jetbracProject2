@@ -38,7 +38,7 @@ public class LonguestAscendingSequence {
 				temp = 1;
 			} 
 		}
-		System.out.format("%d", longest > temp ? longest : temp);
+		System.out.format("%d%n", longest > temp ? longest : temp);
 		scanner.close();
 		System.out.println("****** END OF PROGRAM ******");
 	}
