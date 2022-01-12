@@ -15,6 +15,7 @@ public class MinValue {
 		 */
 		Scanner scanner = new Scanner(System.in);
 		short nbElts = scanner.nextShort();
+		scanner.close();
         int[] elts = new int[nbElts];
         for (; nbElts > 0; nbElts--) {
             elts[nbElts - 1] = scanner.nextInt();
