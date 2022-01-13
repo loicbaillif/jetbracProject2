@@ -31,7 +31,7 @@ public class IndexFirstMax {
 				max = elts[j];
 			}
 		}
-		System.out.format("%d", indexMax);
+		System.out.format("%d%n", indexMax);
 		
 		
 		scanner.close();
