@@ -18,6 +18,25 @@ public class IndexFirstMax {
 		 * 		Only a single integer value: the index of the first maximum.
 		 */
 		Scanner scanner = new Scanner(System.in);
+		short nbElts = scanner.nextShort();
+		int[] elts = new int[nbElts];
+		short indexMax = 0;
+		for (short i = 0; i < nbElts; i++) {
+			elts[i] = scanner.nextInt();
+		}
+		int max = elts[0];
+		for (short j = 1; j < nbElts; j++) {
+			if (elts[j] > max) {
+				indexMax = j;
+				max = elts[j];
+			}
+		}
+		System.out.format("%d", indexMax);
+		
+		
+		scanner.close();
+		
+		System.out.println("****** END OF PROGRAM ******");
 
 	}
 
