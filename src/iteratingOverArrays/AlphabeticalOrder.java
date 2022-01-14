@@ -23,7 +23,7 @@ public class AlphabeticalOrder {
 		String[] wordsA = words.split(" ");
 		boolean result = true;
 		for (int i = 1; i < wordsA.length; i++) {
-			if (wordsA[i].compareTo(wordsA[i - 1]) < 1) {
+			if (wordsA[i].compareTo(wordsA[i - 1]) < 0) {
 				result = false;
 				break; // One failed check is sufficient, no need to go further.
 			}
