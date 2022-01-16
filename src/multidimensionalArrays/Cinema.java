@@ -47,7 +47,7 @@ public class Cinema {
 					neighSeats = 0;
 				}
 				if (neighSeats == kTickets) {
-					result = i++; // Humans start counting from 1;
+					result = ++i; // Humans start counting from 1;
 					break; // Solution found, no need to treat furthermore.
 				}
 			}
