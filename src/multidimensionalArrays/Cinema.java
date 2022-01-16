@@ -41,6 +41,7 @@ public class Cinema {
 		
 		for (byte i = 0; i < nRows; i++) {
 			for (byte j = 0; j < mSeats; j++) {
+				neighSeats = 0;
 				if (cinema[i][j] == 0) {
 					neighSeats++;
 				} else {
