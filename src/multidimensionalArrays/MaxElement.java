@@ -31,9 +31,6 @@ public class MaxElement {
 		for (byte i = 0; i < nRows; i++) {
 			for (byte j = 0; j < mColumns; j++) {
 				matrix[i][j] = scanner.nextInt();
-				if (i == 0 && j == 0) {
-					max = matrix[0][0]; // Init max with the first value
-				} 
 				if (max < matrix[i][j]) {
 					max = matrix[i][j]; // Store the new max value
 					rowMax = i; // Store its coordinates in the matrix
