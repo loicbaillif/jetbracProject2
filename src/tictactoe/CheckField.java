@@ -81,7 +81,7 @@ public class CheckField {
 			}
 		}
 		
-		int[] result = {nbO, nbX};
+		int[] result = {nbO, nbX}; // Alphabetical Order
 		return result;
 	}
 	
