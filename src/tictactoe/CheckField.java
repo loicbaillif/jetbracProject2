@@ -5,8 +5,9 @@ import java.util.Scanner;
 public class CheckField {
 	
 	static int size = 3;
-	static char player1 = 'O';
-	static char player2 = 'X';
+	static int maxRounds = 9;
+	static char player0 = 'O';
+	static char player1 = 'X';
 
 	public static void main(String[] args) {
 		/* ****** PROJECT : Tic Tac Toe ******
@@ -48,14 +49,17 @@ public class CheckField {
 			}
 			System.out.print("Enter cells: ");
 			input = scanner.nextLine();
-		} while (input.length() != 9);
+		} while (input.length() != maxRounds);
 		
-		// TEST countMoves
+		/* TEST countMoves
 		int[] countElts = new int[2];
-		countElts = countMoves(input, player1, player2);
-		System.out.format("%d times %c and %d times %c.%n%n", 
-				countElts[0], player1, countElts[1], player2);
-		// END TEST countMoves
+		countElts = countMoves(input, player0, player1);
+		System.out.format("%d rounds: %d moves from %c - %d moves from %c.%n", 
+				countElts[0] + countElts[1], 
+				countElts[0], player0, countElts[1], player1);
+		// END TEST countMoves */
+		
+		
 		
 		char[][] stage = new char[size][size];
 		for (int i = 0; i < size; i++) {
@@ -69,8 +73,10 @@ public class CheckField {
 	}
 	
 	
+	
+	
 	public static int[] countMoves(String stage, char player1, char player2) {
-		// Test in progress.
+		// Checked and validated.
 		int nbO = 0;
 		int nbX = 0;
 		for (int i = 0; i < size*size; i++) {
@@ -97,6 +103,27 @@ public class CheckField {
 			System.out.format("|%n");
 		}
 		System.out.println("---------");
+	}
+	
+	
+	public static boolean validInput(String input) {
+		// Writing in progress
+		char[] inputC = input.toCharArray();
+		int nbMoves = 0;
+		boolean result = true;
+		for (char elt : inputC) {
+			System.out.format("%c - maxRounds = %d %n", elt, maxRounds);
+			if (nbMoves > maxRounds) {
+				result = false;
+				break;
+			}
+			if (!(elt == 'o' || elt == 'O' || elt == 'x' || elt == 'X' || elt == '_')) {
+				result = false;
+				break;
+			}
+			nbMoves++;
+		}		
+		return result;
 	}
 	
 
