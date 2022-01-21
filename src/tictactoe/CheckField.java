@@ -3,7 +3,7 @@ package tictactoe;
 import java.util.Scanner;
 
 public class CheckField {
-	
+
 	static int size = 3;
 	static int maxRounds = 9;
 	static char player0 = 'O';
@@ -49,48 +49,50 @@ public class CheckField {
 			}
 			System.out.print("Enter cells: ");
 			input = scanner.nextLine();
-		} while (input.length() != maxRounds);
-		
-		/* TEST countMoves
+		} while (!validInput(input));
+
 		int[] countElts = new int[2];
-		countElts = countMoves(input, player0, player1);
+		countElts = countMoves(input);
+		int nbO = countElts[0];
+		int nbX = countElts[1];
 		System.out.format("%d rounds: %d moves from %c - %d moves from %c.%n", 
-				countElts[0] + countElts[1], 
-				countElts[0], player0, countElts[1], player1);
-		// END TEST countMoves */
+				nbO + nbX, nbO, player0, nbX, player1);
 		
-		
-		
+		char temp;
 		char[][] stage = new char[size][size];
 		for (int i = 0; i < size; i++) {
 			for (int j = 0; j < size; j++) {
-				stage[i][j] = input.charAt(size * i + j);
+				temp = input.charAt(size * i + j);
+				if (temp == 'x' || temp == 'o') {
+					temp = Character.toUpperCase(temp);
+				}
+				stage[i][j] = temp;
 			}
 		}
 		displayGrid(stage);
-		
+
 		scanner.close();
 	}
-	
-	
-	
-	
-	public static int[] countMoves(String stage, char player1, char player2) {
+
+
+
+
+	public static int[] countMoves(String stage) {
 		// Checked and validated.
 		int nbO = 0;
 		int nbX = 0;
 		for (int i = 0; i < size*size; i++) {
-			if (stage.charAt(i) == player1) {
+			if (stage.charAt(i) == player0) {
 				nbO++;
-			} else if (stage.charAt(i) == player2) {
+			} else if (stage.charAt(i) == player1) {
 				nbX++;
 			}
 		}
-		
+
 		int[] result = {nbO, nbX}; // Alphabetical Order
 		return result;
 	}
-	
+
 
 	public static void displayGrid(char[][] stage) {
 		// Checked and validated.
@@ -104,32 +106,40 @@ public class CheckField {
 		}
 		System.out.println("---------");
 	}
-	
-	
+
+
 	public static boolean validInput(String input) {
-		// Writing in progress
+		// Checked and validated
 		char[] inputC = input.toCharArray();
-		int nbMoves = 0;
+		int nbMoves = inputC.length;
 		boolean result = true;
-		for (char elt : inputC) {
-			System.out.format("%c - maxRounds = %d %n", elt, maxRounds);
-			if (nbMoves > maxRounds) {
-				result = false;
-				break;
-			}
-			if (!(elt == 'o' || elt == 'O' || elt == 'x' || elt == 'X' || elt == '_')) {
-				result = false;
-				break;
-			}
-			nbMoves++;
-		}		
+		if (nbMoves != maxRounds) {
+			result = false;
+		} else {
+			for (char elt : inputC) {
+				System.out.format("%c - maxRounds = %d %n", elt, maxRounds);
+				if (elt == 'o' || elt == 'O' || elt == 'x' || elt == 'X' || elt == '_') {
+					continue;
+				} else {
+					result = false;
+					break;
+				}
+			}		
+		}
 		return result;
 	}
-	
 
-	public static boolean winGame(char[][] stage, char player) {
-		// TODO
-		return true;
+
+	public static byte wonGame(char[][] stage, int nbO, int nbX) {
+		// Writing in progress
+		// 0 = noWin - 1 = player0 (O) wins - 2 = player1 (X) wins
+		// 3 = both win (impossible)
+		byte result = 0; // no winner
+		if (nbO < 2 && nbX < 2) {
+			result = 0;
+		} 
+		
+		return result;
 	}
 
 }
