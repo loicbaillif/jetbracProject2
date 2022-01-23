@@ -26,7 +26,7 @@ package errorsInProg;
  */
 // Correction:
 
-import java.util.Scanner; // Moved out of the Main class
+import java.util.Scanner; 
 
 public class FixProgram1 { // not a bug but renamed FixProgram1
 
