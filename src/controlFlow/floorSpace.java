@@ -25,7 +25,7 @@ public class floorSpace {
 		
 		Scanner scanner = new Scanner(System.in);
 		String shape = scanner.nextLine();
-		double pi = 3.14; // Malevians ...
+		final double pi = 3.14; // Malevians ...
 		double result = 0.0;
 		switch (shape) {
 		case "triangle": {
@@ -49,6 +49,10 @@ public class floorSpace {
 			result = pi * r * r;
 			break;
 		}
+		
+		default: 
+			System.out.println("This is not a shape for a proper room");
+			break;
 
 		}
 		
