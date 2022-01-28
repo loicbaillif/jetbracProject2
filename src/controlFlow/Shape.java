@@ -21,7 +21,7 @@ public class Shape {
 		Scanner scanner = new Scanner(System.in);
 		byte userInput = scanner.nextByte();
 		String output = "There is no such shape!";
-		switch (userInput) {
+		switch(userInput) {
 		case 1:
 			output = "You have chosen a square";
 			break;
