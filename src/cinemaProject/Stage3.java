@@ -69,18 +69,8 @@ public class Stage3 {
 		priceSeat(room, customerRow); // Row is enough to provide price.
 		room = updateRoom(room, customerRow, customerSeat);
 		displayRoom(room);
-		
-
-
-
-
-
-
-
-
 
 		scanner.close();
-
 
 	}
 
