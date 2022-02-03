@@ -89,7 +89,6 @@ public class Stage3 {
 	public static void displayRoom(char[][] room) {
 		byte nbRows = (byte) room.length;
 		byte seatsPerRow = (byte) room[0].length;
-		System.out.printf("nbRows = %d - seatsPerRow = %d%n", nbRows, seatsPerRow);
 
 		System.out.println("Cinema:");
 
