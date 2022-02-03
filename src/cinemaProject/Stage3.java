@@ -118,7 +118,7 @@ public class Stage3 {
 		if ((byte) (nbRows * seatsPerRow) > largeRoom) {
 			result = row <= topRows ? priceTop : priceStandard;
 		} else {
-			result = priceStandard;
+			result = priceTop;
 		}
 		System.out.printf("Ticket price: $%d%n", result);
 		return result;
