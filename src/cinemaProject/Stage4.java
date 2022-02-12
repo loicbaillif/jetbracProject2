@@ -73,6 +73,7 @@ public class Stage4 {
 
 
 	public static void buyTicket(char[][] room, byte nbRows, byte seatsPerRow) {
+		@SuppressWarnings("resource")
 		Scanner scanner = new Scanner(System.in);
 		byte customerRow = 0;
 		byte customerSeat = 0;
@@ -103,6 +104,7 @@ public class Stage4 {
 
 
 	public static byte displayMenu() {
+		@SuppressWarnings("resource")
 		Scanner scanner = new Scanner(System.in);
 		byte userInput = -1;
 		do { 
