@@ -117,6 +117,7 @@ public class Final {
 		// Gets the input from player, and ask again until it is acceptable
 		// Acceptable = 2 numbers between 1 and 3 (included), and 
 		// 				corresponding to an empty cell.
+		@SuppressWarnings("resource")
 		Scanner scanner = new Scanner(System.in);
 		boolean validInput = false;
 		byte userInput = 0;

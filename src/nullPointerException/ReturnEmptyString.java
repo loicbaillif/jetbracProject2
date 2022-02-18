@@ -31,6 +31,7 @@ public class ReturnEmptyString {
 
 	// Do not change the code below
 	public static void main(String[] args) {
+		@SuppressWarnings("resource")
 		Scanner scanner = new Scanner(System.in);
 		String line = scanner.nextLine();
 		line = "none".equalsIgnoreCase(line) ? null : line;
