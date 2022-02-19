@@ -21,15 +21,14 @@ public class FullName {
 				? lastName == null ? "" : lastName
 				: lastName == null 
 						? firstName 
-						: firstName.concat(space).concat(lastName);
-		
-		
+						: firstName.concat(space).concat(lastName);		
 		return result;
     }
 
     /* Do not change code below */
     public static void main(String[] args) {
-        final Scanner scanner = new Scanner(System.in);
+        @SuppressWarnings("resource")
+		final Scanner scanner = new Scanner(System.in);
 
         String firstName = scanner.nextLine();
         firstName = "null".equals(firstName) ? null : firstName;
