@@ -25,16 +25,29 @@ public class Clock {
 	int maxMinutes = 59;
 	
 	void next() {
-		this.minutes = this.minutes == maxMinutes 
-				? minMinutes 
-				: this.minutes++; 
-		if (this.minutes == minMinutes) {
-			if (this.hours == maxHours) {
-				this.hours = minHours;
-			} else {
-				this.hours ++;
-			}
-			
+		this.minutes++;
+		
+		this.hours += (this.minutes / (maxMinutes + 1));
+		this.hours = this.hours > this.maxHours ? this.minHours : this.hours;
+		this.minutes = this.minutes > this.maxMinutes
+				? this.minMinutes
+				: this.minutes;		
+	}
+	
+	void showTime() {
+		System.out.printf("Current time: %02d:%02d%n", 
+				this.hours, this.minutes);
+	}
+	
+	
+	public static void main(String[] args) {
+		Clock clock = new Clock();
+		clock.hours = 12;
+		clock.minutes = 34;
+		clock.showTime();
+		for (int i = 0; i < clock.maxMinutes; i++) {
+			clock.next(); 
+			clock.showTime();
 		}
 		
 	}
