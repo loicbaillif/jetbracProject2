@@ -1,3 +1,5 @@
+package terminal;
+
 import java.util.Scanner;
 
 public class Main {
@@ -11,5 +13,7 @@ public class Main {
         } else {
             System.out.println("You can ask your parents for money");
         }
+        
+        scanner.close();
     }
 }
