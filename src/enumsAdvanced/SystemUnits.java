@@ -33,7 +33,6 @@ enum SystemUnits {
 		System.out.println(kgUnit.getQuantityName());
 		System.out.println(mUnit.getQuantityName());
 		System.out.println(sUnit.getQuantityName());
-		System.out.println(sUnit.getClass());
 	}
 
 	
