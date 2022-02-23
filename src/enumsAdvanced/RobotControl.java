@@ -20,6 +20,16 @@ package enumsAdvanced;
 
 public class RobotControl {
 	
+	public static void main(String[] args) {
+		Robot r2d2 = new Robot(0, 0, Direction.UP);
+		moveRobot(r2d2, 3, 0);
+		
+		System.out.println("New Robot");
+		
+		Robot c3pO = new Robot(1, 1, Direction.RIGHT);
+		moveRobot(c3pO, 0, -1);
+	}
+	
 	public static void moveRobot(Robot robot, int toX, int toY) {
 		int deltaX = toX - robot.getX();
 		int deltaY = toY - robot.getY();
@@ -31,52 +41,143 @@ public class RobotControl {
 		Direction up = Direction.UP;
 		Direction down = Direction.DOWN;
 		
-		if (deltaX !=0 && currentDirection == xDirection) {
-			// First case: Already towards good direction on X axis
+		if (deltaX != 0 && currentDirection == xDirection) {
+			System.out.println("First case: "
+					+ "Already towards good direction on X axis"); 
+			
 			do {
 				robot.stepForward();
+				System.out.println("robot.stepForward()");
 				deltaX = toX - robot.getX();
 			} while (deltaX != 0);
+			
+			currentDirection = robot.getDirection();
 			
 			if (deltaY != 0) {
 				// Needed to move along Y axis
 				if ( (currentDirection == left && yDirection == down) 
 						|| (currentDirection == right && yDirection == up)) { 
 					robot.turnLeft();
+					System.out.println("robot.turnLeft()");
 				} else {
 					robot.turnRight();
+					System.out.println("robot.turnRight()");
 				}
 				do {
 					robot.stepForward();
+					System.out.println("robot.stepForward()");
 					deltaY = toY - robot.getY();
 				} while (deltaY != 0);
 			}
 			
-		}
-		
-		if (deltaY != 0 && currentDirection == yDirection) {
-			// Second case: Already towards good direction on Y axis
+		} else if (deltaY != 0 && currentDirection == yDirection) {
+			System.out.println("Second case: " 
+					+ "Already towards good direction on Y axis");
 			do {
 				robot.stepForward();
+				System.out.println("robot.stepForward()");
 				deltaY = toY - robot.getY();
 			} while (deltaY != 0);
+			
+			currentDirection = robot.getDirection();
 			
 			if (deltaX != 0) {
 				// Needed to move along X axis
 				if ( (currentDirection == up && xDirection == left) 
 						|| (currentDirection == down && xDirection == right)) {
 					robot.turnLeft();
+					System.out.println("robot.turnLeft()");
 				} else {
 					robot.turnRight();
+					System.out.println("robot.turnRight()");
 				}
 			}
+		} else {
+			// Third case TODO : Not directed at all in a good direction ...
+			System.out.println("Third case: Not directed towards any "
+					+ "good direction... ");
+			if (currentDirection == up || currentDirection == down) {
+				if (deltaX != 0) {
+					if ((currentDirection == up && xDirection == left)
+							|| (currentDirection == down && yDirection == right)) {
+						robot.turnLeft();
+						System.out.println("robot.turnLeft()");
+					} else {
+						robot.turnRight();
+						System.out.println("robot.turnRight()");
+					}
+					do {
+						robot.stepForward();
+						System.out.println("robot.stepForward()");
+						deltaX = toX - robot.getX();
+					} while (deltaX != 0);
+				} else {
+					robot.turnLeft();
+					System.out.println("robot.turnLeft()");
+				}
+				
+				currentDirection = robot.getDirection();
+				
+				if (deltaY != 0) {
+					if ( (currentDirection == left && yDirection == down) 
+							|| (currentDirection == right && yDirection == up) ) {
+						robot.turnLeft();
+						System.out.println("robot.turnLeft()");
+					} else {
+						robot.turnRight();
+						System.out.println("robot.turnRight()");
+					}
+					do {
+						robot.stepForward();
+						System.out.println("robot.stepForward()");
+						deltaY = toY - robot.getY();
+					} while (deltaY != 0);
+				}
+				
+			} else {
+				if (deltaY != 0) {
+					if ( (currentDirection == left && yDirection == down) 
+							|| (currentDirection == right && yDirection == up) ) {
+						robot.turnLeft();
+						System.out.println("robot.turnLeft()");
+					} else {
+						robot.turnRight();
+						System.out.println("robot.turnRight()");
+					}
+					do {
+						robot.stepForward();
+						System.out.println("robot.stepForward()");
+						deltaY = toY - robot.getY();
+					} while (deltaY != 0);
+				} else {
+					robot.turnLeft();
+					System.out.println("robot.turnLeft()");
+				}
+				
+				if (deltaX != 0) {
+					if ((currentDirection == up && xDirection == left)
+							|| (currentDirection == down && yDirection == right)) {
+						robot.turnLeft();
+						System.out.println("robot.turnLeft()");
+					} else {
+						robot.turnRight();
+						System.out.println("robot.turnRight()");
+					}
+					do {
+						robot.stepForward();
+						System.out.println("robot.stepForward()");
+						deltaX = toX - robot.getX();
+					} while (deltaX != 0);
+				}
+				
+			}
+			
+			currentDirection = robot.getDirection();
+			
 		}
 		
-		// Third case TODO : Not directed at all in a good direction ...
-		// Then we'll do X first and Y then
-		
 
-        robot.stepForward(); // your implementation here
+        // robot.stepForward(); // your implementation here
     }
 
 }
