@@ -21,6 +21,35 @@ package enumsAdvanced;
 public class RobotControl {
 	
 	public static void main(String[] args) {
+		Robot robot1 = new Robot(0, 0, Direction.UP);
+		Robot robot2 = new Robot(1, 1, Direction.RIGHT);
+		Robot robot3 = new Robot(0, 0, Direction.UP);
+		Robot[] arrayRobots = {robot1, robot2, robot3};
+		int[] targetRobots = {3, 0, 0, -1, 10, 10};
+		
+		for (int i = 0; i < arrayRobots.length; i++) {
+			System.out.printf("Robot%d:\n\tInitial position & direction = ", 
+					i);
+			System.out.printf("(%d, %d), looking %s\n", 
+					arrayRobots[i].getX(), 
+					arrayRobots[i].getY(), 
+					String.valueOf(arrayRobots[i].getDirection()));
+			System.out.printf("\tTarget position: (%d, %d)\n", 
+					targetRobots[i * 2], targetRobots[i * 2 + 1]);
+			moveRobot(
+					arrayRobots[i], 
+					targetRobots[i * 2], 
+					targetRobots[i * 2 + 1]);
+			System.out.printf("Final position: (%d, %d)\n\n", 
+					arrayRobots[i].getX(), 
+					arrayRobots[i].getY());
+			
+		}
+		
+		/*
+		System.out.print("R2D2: \n\tInitial position & direction: ");
+		System.out.println("(0, 0), looking UP");
+		System.out.println("\tTarget position: (3, 0)");
 		Robot r2d2 = new Robot(0, 0, Direction.UP);
 		moveRobot(r2d2, 3, 0);
 		
@@ -28,6 +57,7 @@ public class RobotControl {
 		
 		Robot c3pO = new Robot(1, 1, Direction.RIGHT);
 		moveRobot(c3pO, 0, -1);
+		*/
 	}
 	
 	public static void moveRobot(Robot robot, int toX, int toY) {
@@ -91,6 +121,11 @@ public class RobotControl {
 					robot.turnRight();
 					System.out.println("robot.turnRight()");
 				}
+				do {
+					robot.stepForward();
+					System.out.println("robot.stepForward()");
+					deltaX = toX - robot.getX();
+				} while (deltaX != 0);
 			}
 		} else {
 			// Third case TODO : Not directed at all in a good direction ...
