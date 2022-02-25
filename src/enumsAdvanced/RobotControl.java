@@ -136,10 +136,13 @@ public class RobotControl {
 		Direction up = Direction.UP;
 		Direction down = Direction.DOWN;
 		Direction currentDirection = robot.getDirection();
-		if (currentDirection == up && targetDirection == left
-				|| currentDirection == left && targetDirection == down
-				|| currentDirection == down && targetDirection == right 
-				|| currentDirection == right && targetDirection == up) {
+		if (currentDirection == up && targetDirection == left) {
+			robot.turnLeft();
+		} else if (currentDirection == left && targetDirection == down) {
+			robot.turnLeft();
+		} else if (currentDirection == down && targetDirection == right) {
+			robot.turnLeft();
+		} else if (currentDirection == right && targetDirection == up) {
 			robot.turnLeft();
 			System.out.println("robot.turnLeft() - method");
 		} else {
