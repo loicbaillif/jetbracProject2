@@ -54,16 +54,21 @@ import java.util.Scanner;
 public class BuzzNumbers {
 
 	final static String askNumber = "Enter a natural number:";
-	final static String buzzStatus1 = "%d is neither divisible by 7 "
-			+ "nor does it end with 7";
-	final static String buzzStatus2 = "%d is divisible by 7";
-	final static String buzzStatus3 = "%d ends with 7";
-	final static String buzzStatus4 = "%d is divisible by 7 and ends with 7";
+	final static String buzzStatus0 = "%d is neither divisible by 7 "
+			+ "nor does it end with 7%n";
+	final static String buzzStatus1 = "%d is divisible by 7 and ends with 7%n";
+	final static String buzzStatus2 = "%d is divisible by 7%n";
+	final static String buzzStatus3 = "%d ends with 7%n";
+	final static String[] statusList = {
+			buzzStatus0, 
+			buzzStatus1, 
+			buzzStatus2, 
+			buzzStatus3
+	};
 	final static String notNatural = "This number is not natural!";
-	
+
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		System.out.println(askNumber);
 		int n = isNatural();
 		if (n != 0) {
@@ -71,38 +76,45 @@ public class BuzzNumbers {
 			isBuzz(n);
 		} 
 	}
-	
-	
+
+
 	public static boolean divisibleBy7(int n) {
 		// Guaranteed to be > 0;
-		boolean result = false;
 		int unitDigit;
+		boolean result = false;
 		int mainDigits = n;
-		int remainingDigits;
-		do {
+		while (mainDigits > 9) {
 			unitDigit = mainDigits % 10;
-			remainingDigits = (mainDigits / 10) - (2 * unitDigit);
-			mainDigits = remainingDigits;
-			if (remainingDigits == 0 || remainingDigits == 7) {
-				result = true;
-			}
-		} while (mainDigits > 9);
-		
+			mainDigits = (mainDigits / 10) - (2 * unitDigit);
+		}		
+		if (mainDigits% 7 == 0) {
+			result = true;
+		}
+
 		return result;
 	}
 
 
 	public static void isBuzz(int n) {
 		int unitNumber = n % 10;
-		// buzzStatus : {isBuzz?, buzzDetail0?, buzzDetail1?, buzzDetail2?, 
-		// 				 buzzDetail3?, buzzDetail4}
-		boolean[] buzzStatus = {false, false, false, false, false};
+		// buzzStatus={buzzStatus0?, buzzStatus1?, buzzStatus2?, buzzStatus3?}
+		boolean[] buzzStatus = {false, false, false, false};
 		if (unitNumber == 7) {
-			buzzStatus[0] = true;
 			buzzStatus[3] = true;
 		}
-		
-		System.out.printf("%d is a Buzz?%n", n);
+		if (divisibleBy7(n)) {
+			buzzStatus[2] = true;
+		}
+		buzzStatus[0] = !(buzzStatus[2] || buzzStatus[3]); 
+		buzzStatus[1] = buzzStatus[2] && buzzStatus[3];
+		System.out.printf("It is" + (buzzStatus[0] ? " not " : " ") 
+				+ "a Buzz number%nExplanation:%n");
+		for (int i = 0; i < buzzStatus.length; i++) {
+			if (buzzStatus[i]) {
+				System.out.printf(statusList[i], n);
+				break;
+			}
+		}
 	}
 
 
@@ -124,7 +136,7 @@ public class BuzzNumbers {
 			System.out.println("An integer number please ...");
 		} 
 		userInput = scanner.nextInt();
-		if (userInput < 0) {
+		if (userInput <= 0) {
 			System.out.println(notNatural);
 			userInput = 0;
 		}		
