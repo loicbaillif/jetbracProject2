@@ -1,5 +1,7 @@
 package amazingNumbers;
 
+import java.util.Scanner;
+
 
 /* ****** PROJECT AMAZING NUMBERS : Stage 2/8 - Duck Numbers ******
  * 
@@ -49,7 +51,40 @@ public class Stage2 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		Number number0 = new Number(1);
+		Number number1 = new Number(22);
+		Number number2 = new Number(333);
+		Number number3 = new Number(1232);
+		Number number4 = new Number(567);
+		Number[] numberArray = {number0, number1, number2, number3, number4};
+		for (Number numberTested : numberArray) {
+			numberTested.presentNumber();
+			System.out.println("\n**********\n");
+		}
+		
+		Number userInput = new Number(getNatural());
+		if (userInput.getNatural()) {
+			userInput.presentNumber();
+		}
+		
+		
+	}
+	
+	
+	public static int getNatural() {
+		Scanner scanner = new Scanner(System.in);
+		int userInput = 0;
+		if (scanner.hasNextInt()) {
+			userInput = scanner.nextInt();
+			if (userInput < 0) {
+				userInput = 0;
+			}
+		}
+		if (userInput == 0) {
+			System.out.println("This number is not natural!");
+		}
+		scanner.close();
+		return userInput;
 	}
 
 }
