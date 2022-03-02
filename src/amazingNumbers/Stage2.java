@@ -50,7 +50,7 @@ import java.util.Scanner;
 public class Stage2 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		/*
 		Number number0 = new Number(1);
 		Number number1 = new Number(22);
 		Number number2 = new Number(333);
@@ -61,18 +61,19 @@ public class Stage2 {
 			numberTested.presentNumber();
 			System.out.println("\n**********\n");
 		}
+		*/
 		
 		Number userInput = new Number(getNatural());
 		if (userInput.getNatural()) {
 			userInput.presentNumber();
-		}
-		
+		}		
 		
 	}
 	
 	
 	public static int getNatural() {
 		Scanner scanner = new Scanner(System.in);
+		System.out.println("Enter a natural number:");
 		int userInput = 0;
 		if (scanner.hasNextInt()) {
 			userInput = scanner.nextInt();
