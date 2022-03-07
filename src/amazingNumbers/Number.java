@@ -11,10 +11,13 @@ public class Number {
 	public Number(int number) {
 		this.number = number;
 		isNatural();
-		isEven();
-		isOdd();
-		isBuzz();
-		isDuck();
+		if (natural) {
+			isEven();
+			isOdd();
+			isBuzz();
+			isDuck();
+		}
+		
 	}
 
 	public int getNumber() {
