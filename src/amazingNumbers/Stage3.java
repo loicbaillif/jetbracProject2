@@ -56,7 +56,9 @@ public class Stage3 {
 		Number userInput = new Number(getNatural());
 		if (userInput.getNatural()) {
 			userInput.presentNumber();
-		}		
+		} else {
+			System.out.println("This number is not natural!");
+		}
 		
 	}
 	
@@ -64,15 +66,9 @@ public class Stage3 {
 	public static int getNatural() {
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Enter a natural number:");
-		int userInput = 0;
+		int userInput = -1;
 		if (scanner.hasNextInt()) {
 			userInput = scanner.nextInt();
-			if (userInput < 0) {
-				userInput = 0;
-			}
-		}
-		if (userInput == 0) {
-			System.out.println("This number is not natural!");
 		}
 		scanner.close();
 		return userInput;
