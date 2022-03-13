@@ -53,24 +53,48 @@ public class Stage3 {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		Number userInput = new Number(getNatural());
-		if (userInput.getNatural()) {
-			userInput.presentNumber();
-		} else {
-			System.out.println("This number is not natural!");
-		}
-		
+		System.out.println("Welcome to Amazing Numbers!");
+		System.out.println("Supported requests:\r\n"
+				+ "- enter a natural number to know its properties;\r\n"
+				+ "- enter 0 to exit.");
+		boolean keepGoing = true;
+		Number number;
+		do {
+			long userInput = getUserInput();			
+			if (userInput == 0) {
+				keepGoing = false;
+			} else {
+				number = new Number(userInput);
+				number.presentNumber();
+			}
+		} while (keepGoing);
+
+		System.out.println("Goodbye!");
 	}
-	
-	
-	public static int getNatural() {
+
+
+
+	public static long getUserInput() {
+		@SuppressWarnings("resource")
 		Scanner scanner = new Scanner(System.in);
-		System.out.println("Enter a natural number:");
-		int userInput = -1;
-		if (scanner.hasNextInt()) {
-			userInput = scanner.nextInt();
-		}
-		scanner.close();
+		long userInput = 0L;
+		boolean validInput = false;
+		do {
+			System.out.println("Enter a request");
+			if (scanner.hasNextLong()) {
+				userInput = scanner.nextLong();
+				if (userInput >= 0L) {
+					validInput = true;
+				}
+			} else {
+				scanner.next();
+			}
+			if (!validInput) {
+				System.out.println("The first parameter should be "
+						+ "a natural number or zero.");
+			}
+		} while (!validInput);
+
 		return userInput;
 	}
 

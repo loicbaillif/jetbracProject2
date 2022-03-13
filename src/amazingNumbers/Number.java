@@ -1,14 +1,15 @@
 package amazingNumbers;
 
 public class Number {
-	private int number;
-	private boolean natural;
-	private boolean even;
-	private boolean odd;
+	private long number;
 	private boolean buzz;
 	private boolean duck;
+	private boolean even;
+	private boolean natural;
+	private boolean odd;
+	private boolean palindromic;
 
-	public Number(int number) {
+	public Number(long number) {
 		this.number = number;
 		isNatural();
 		if (natural) {
@@ -16,24 +17,13 @@ public class Number {
 			isOdd();
 			isBuzz();
 			isDuck();
+			isPalindromic();
 		}
 		
 	}
 
-	public int getNumber() {
+	public long getNumber() {
 		return number;
-	}
-
-	public boolean getNatural() {
-		return natural;
-	}
-
-	public boolean getEven() {
-		return even;
-	}
-
-	public boolean getOdd() {
-		return odd;
 	}
 
 	public boolean getBuzz() {
@@ -44,18 +34,22 @@ public class Number {
 		return duck;
 	}
 
-
-	public void isNatural() {
-		natural = number > 0;
+	public boolean getEven() {
+		return even;
 	}
 
-	public void isEven() {
-		even = number % 2 == 0;
+	public boolean getNatural() {
+		return natural;
 	}
 
-	public void isOdd() {
-		odd = number % 2 == 1;
+	public boolean getOdd() {
+		return odd;
 	}
+	
+	public boolean getPalindromic() {
+		return palindromic;
+	}
+	
 
 	public void isBuzz() {
 		buzz = divisibleBySeven(number) || endByX(number, 7);
@@ -65,13 +59,29 @@ public class Number {
 		duck = containsX(number, 0);
 	}
 
+	public void isEven() {
+		even = number % 2 == 0;
+	}
 
-	public boolean containsX(int number, int digit) {
+	public void isNatural() {
+		natural = number > 0;
+	}
+
+	public void isOdd() {
+		odd = number % 2 == 1;
+	}
+	
+	public void isPalindromic() {
+		palindromic = palindromic(number);
+	}
+
+
+	public boolean containsX(long number, int digit) {
 		if (number < 10) {
 			return number == digit;
 		} else {
-			int remainingDigits = number;
-			int lastDigit = number % 10;
+			long remainingDigits = number;
+			int lastDigit = (int) (number % 10);
 			boolean result = false;
 			while (remainingDigits > 9) {
 				if (lastDigit == digit) {
@@ -79,7 +89,7 @@ public class Number {
 					remainingDigits = 0; // Interrupt the while if digit found
 				} else {
 					remainingDigits /= 10;
-					lastDigit = remainingDigits % 10;
+					lastDigit = (int) (remainingDigits % 10);
 				}
 			}
 			return result;
@@ -87,8 +97,8 @@ public class Number {
 	}
 
 
-	public boolean divisibleBySeven(int number) {
-		int remainingDigits = number;
+	public boolean divisibleBySeven(long number) {
+		long remainingDigits = number;
 		byte unitDigits;
 		while (remainingDigits > 9) {
 			unitDigits = (byte) (remainingDigits % 10);
@@ -99,15 +109,28 @@ public class Number {
 	}
 
 
-	public boolean endByX(int number, int lastDigit) {
+	public boolean endByX(long number, int lastDigit) {
 		return (number % 10 == lastDigit);
+	}
+	
+	
+	public boolean palindromic(long number) {
+		long remaining = number;
+		long numberMirror = 0;		
+		while (remaining > 0) {
+			numberMirror *= 10;
+			numberMirror += remaining % 10;
+			remaining /= 10;
+		}
+		
+		return numberMirror == number;
 	}
 
 
 	public void presentNumber() {
 		String present = "Properties of %d%n\tEven: %b%n\tOdd: %b%n" + 
-				"\tBuzz: %b%n\tDuck: %b%n";
-		System.out.printf(present, number, even, odd, buzz, duck);
+				"\tBuzz: %b%n\tDuck: %b%n\tPalindromic: %b%n";
+		System.out.printf(present, number, even, odd, buzz, duck, palindromic);
 	}
 
 
