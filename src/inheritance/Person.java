@@ -59,6 +59,21 @@ class Person {
 			this.address = address;
 		}
 	}	
+	
+	
+	public static void main(String[] args) {
+		Programmer p1 = new Programmer();
+		p1.setAddress("mail Ada Lovelace");
+		p1.setName("John Elephant");
+		p1.setProgrammingLanguages(new String[] 
+				{"Java", "Python", "JavaScript"});
+		p1.setYearOfBirth(1980);
+		p1.setStartDateOfWork(new int[] {13, 10, 2020});
+		p1.setSalary(500_000L);
+		
+		
+		
+	}
 }
 
 
@@ -93,7 +108,7 @@ class Client extends Person {
 class Employee extends Person {	
 	// Fields:
 	protected int[] startDateOfWork = new int[3];
-	protected int salary; // in cents.
+	protected long salary; // in cents.
 	
 	// Getters and Setters:
 	public int[] getStartDateOfWork() {
@@ -102,7 +117,15 @@ class Employee extends Person {
 	
 	public void setStartDateOfWork(int[] startDateOfWork) {
 		this.startDateOfWork = startDateOfWork.clone();
-	}		
+	}	
+	
+	public long getSalary() {
+		return salary;
+	}
+	
+	public void setSalary(long salary) {
+		this.salary = salary;
+	}
 }
 
 
