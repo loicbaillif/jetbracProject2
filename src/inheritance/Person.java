@@ -1,5 +1,7 @@
 package inheritance;
 
+import java.util.Arrays;
+
 /* ****** INHERITANCE - THEORY : Example of class hierarchy ******
 * 
 * Let's consider a more graphic example. A telecommunication company serves 
@@ -63,6 +65,7 @@ class Person {
 	
 	public static void main(String[] args) {
 		Programmer p1 = new Programmer();
+		
 		p1.setAddress("mail Ada Lovelace");
 		p1.setName("John Elephant");
 		p1.setProgrammingLanguages(new String[] 
@@ -71,6 +74,7 @@ class Person {
 		p1.setStartDateOfWork(new int[] {13, 10, 2020});
 		p1.setSalary(500_000L);
 		
+		p1.introduce();
 		
 		
 	}
@@ -141,6 +145,15 @@ class Programmer extends Employee {
 	public void setProgrammingLanguages(String[] programmingLanguages) {
 		this.programmingLanguages = programmingLanguages.clone();
 	}		
+	
+	// Method
+	public void introduce() {
+		System.out.println("Hi, I am honored to work for you!");
+		System.out.printf("My name is %s, and you give me %,d$ per year.%n", 
+				getName(), getSalary());
+		System.out.printf("I was born in %d, and I now master %s.%n", 
+				getYearOfBirth(), Arrays.toString(getProgrammingLanguages()));
+	}
 }
 
 
