@@ -19,6 +19,18 @@ interface TheoryInterface {
 	
 	void instanceMethod2(); // Abstract method without implementation
 	
+	static void staticMethod() {
+		System.out.println("TheoryInterface: Static Method");
+	}
 	
+	default void defaultMethod() {
+		System.out.println("TheoryInterface: Default Method. "
+				+ "It can be overridden.");
+	}
+	
+	private void privateMethod() {
+		System.out.println("TheoryInterface: Private Methods in "
+				+ "interfaces are acceptable... but should have a body");
+	}
 	
 }
