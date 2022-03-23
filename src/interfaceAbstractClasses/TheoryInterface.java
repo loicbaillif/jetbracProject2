@@ -15,9 +15,9 @@ interface TheoryInterface {
 	
 	int INT_CONSTANT = 0; // Identical to "public static final int ..."
 	
-	void instanceMethod1(); // Abstract method without implementation
+	int timesFive(int userInput); // Abstract method without implementation
 	
-	void instanceMethod2(); // Abstract method without implementation
+	boolean isEven(int userInput); // Abstract method without implementation
 	
 	static void staticMethod() {
 		System.out.println("TheoryInterface: Static Method");
@@ -26,11 +26,6 @@ interface TheoryInterface {
 	default void defaultMethod() {
 		System.out.println("TheoryInterface: Default Method. "
 				+ "It can be overridden.");
-	}
-	
-	private void privateMethod() {
-		System.out.println("TheoryInterface: Private Methods in "
-				+ "interfaces are acceptable... but should have a body");
 	}
 	
 }
