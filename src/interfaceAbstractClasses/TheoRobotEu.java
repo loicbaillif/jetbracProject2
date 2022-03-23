@@ -3,7 +3,7 @@ package interfaceAbstractClasses;
 public class TheoRobotEu implements TheoryInterface {
 	
 	public int timesFive(int userInput) {
-		//System.out.printf("Multiply %d by 5? Easy peasy.%n", userInput);
+		System.out.printf("Multiply %d by 5? Easy peasy.%n", userInput);
 		System.out.println("I add a 0 at the end ... which gives ...");
 		System.out.printf("\t%d%n", userInput * 10);
 		System.out.println("Then I divide by 2! which gives ...");
