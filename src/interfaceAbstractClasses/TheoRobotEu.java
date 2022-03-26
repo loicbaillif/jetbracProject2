@@ -28,10 +28,6 @@ public class TheoRobotEu implements TheoryInterface {
 		}
 		return result;
 	}
-	
-	public void staticMethod() {
-		
-	}
 
 	
 }
