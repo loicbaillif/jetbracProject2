@@ -26,8 +26,8 @@ public class TheoRobotUs implements TheoryInterface {
 		System.out.printf("So now you want me to tell you if %d is even?", 
 				userInput);
 		System.out.println("I'll do it my way dude. Just need one check");
-		System.out.printf("What's the remaining of %d divided by 2? "
-				+ "if it is 0, %d is even. Else it is NOT! Yeah!", 
+		System.out.printf("What's the remaining of %d divided by 2?%n"
+				+ "if it is 0, %d is even. Else it is NOT! Yeah!%n", 
 				userInput, userInput);
 		System.out.printf("Yeah dude, that's %d ... ", userInput%2);
 		return userInput % 2 == 0;
