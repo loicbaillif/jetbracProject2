@@ -42,7 +42,7 @@ public class TheoryExample {
 		System.out.println("*** The EU robot:");
 		TheoryInterface.staticMethod();
 		System.out.println("\n*** The US robot:");
-		tr2.staticMethod();
+		TheoryInterface.staticMethod();
 	}
 
 }
