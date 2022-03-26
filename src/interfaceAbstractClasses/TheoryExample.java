@@ -40,9 +40,9 @@ public class TheoryExample {
 		tr2.defaultMethod();
 		System.out.println("\n\t****** FOURTH EXERCISE ******\n");
 		System.out.println("*** The EU robot:");
-		tr1.staticMethod();
+		TheoryInterface.staticMethod();
 		System.out.println("\n*** The US robot:");
-		tr2.defaultMethod();
+		tr2.staticMethod();
 	}
 
 }
