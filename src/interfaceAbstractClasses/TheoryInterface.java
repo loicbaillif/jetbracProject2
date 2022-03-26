@@ -27,6 +27,7 @@ interface TheoryInterface {
 	default void defaultMethod() {
 		System.out.println("TheoryInterface: Default Method. "
 				+ "It can be overridden.");
+		TheoryInterface.staticMethod();
 	}
 	
 }
