@@ -8,6 +8,7 @@ public class TheoryExample {
 		TheoRobotEu tr1 = new TheoRobotEu();
 		TheoRobotUs tr2 = new TheoRobotUs();
 		int userInput = 1;
+		@SuppressWarnings("unused")
 		int result;
 		boolean isEven;
 		@SuppressWarnings("resource")
