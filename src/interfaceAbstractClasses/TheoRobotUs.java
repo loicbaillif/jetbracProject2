@@ -37,8 +37,4 @@ public class TheoRobotUs implements TheoryInterface {
 		System.out.println("Hell yeah, I can override this one!");
 		System.out.println("Obviously if I am allowed to do it, I will do it");
 	}
-
-	public void staticMethod() {
-
-	}
 }
