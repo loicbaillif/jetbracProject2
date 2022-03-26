@@ -29,7 +29,9 @@ public class TheoRobotEu implements TheoryInterface {
 		return result;
 	}
 	
-	// TheoryInterface instance = new TheoRobotEu();
+	public void staticMethod() {
+		
+	}
 
 	
 }
