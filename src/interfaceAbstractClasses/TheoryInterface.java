@@ -21,6 +21,7 @@ interface TheoryInterface {
 	
 	static void staticMethod() {
 		System.out.println("TheoryInterface: Static Method");
+		System.out.println("This should be the same for all implementations");
 	}
 	
 	default void defaultMethod() {
