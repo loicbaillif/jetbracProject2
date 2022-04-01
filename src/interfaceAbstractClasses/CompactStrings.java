@@ -29,7 +29,7 @@ package interfaceAbstractClasses;
 
 import java.util.*;
 
-class CompactStrings implements java.lang.CharSequence {
+class CompactStrings implements CharSequence {
 
 	byte[] compactStringsArray;
 
@@ -68,7 +68,7 @@ class CompactStrings implements java.lang.CharSequence {
 	public String toString() {
 		StringBuilder result = new StringBuilder();
 		for (byte letter: compactStringsArray) {
-			result.append((char)letter);
+			result.append((char) letter);
 		}
 		return result.toString();
 	}
