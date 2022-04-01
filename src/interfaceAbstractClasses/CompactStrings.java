@@ -55,21 +55,17 @@ class CompactStrings implements java.lang.CharSequence {
 	}
 
 	@Override
-	public CharSequence subSequence(int start, int end) {
-		// TODO Auto-generated method stub
-		/*
-		if (start <= end && 
-				start < compactStringsArray.length && 
-				end < compactStringsArray.length) {
-			return Arrays.copyOfRange(compactStringsArray, start, end);
+	public CompactStrings subSequence(int from, int to) {
+		byte[] temp = new byte[to - from];
+		for (int i = 0; i < to - from; i++) {
+			temp[i] = compactStringsArray[from + i];
 		}
-		*/
-		return null;
+		CompactStrings result = new CompactStrings(temp);
+		return result;
 	}
 
 	@Override
 	public String toString() {
-		// TODO 
 		StringBuilder result = new StringBuilder();
 		for (byte letter: compactStringsArray) {
 			result.append((char)letter);
@@ -81,11 +77,13 @@ class CompactStrings implements java.lang.CharSequence {
 	
 	
 	public static void main(String[] args) {
-		byte[] test1Byte = {33, 88, 57};
+		// byte[] test1Byte = {33, 88, 57, 28, 42};
+		byte[] test1Byte = {33, 88, 57, 123, 42};
 		CompactStrings test1 = new CompactStrings(test1Byte);
 		System.out.println(test1.charAt(1));
 		System.out.println(test1.length());
 		System.out.println(test1.toString());
+		System.out.println(test1.subSequence(1, 4));
 	}
 
 }
