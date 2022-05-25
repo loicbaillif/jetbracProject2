@@ -14,7 +14,11 @@ class Solution {
 
     public void printIsNull(Object o) {
         // write your code here
-    	
+    	if (Objects.equals(o, null)) {
+    		System.out.println("It's null");
+    	} else {
+    		System.out.println("It's an object");
+    	}
     }
 }
 
